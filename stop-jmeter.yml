@@ -1,0 +1,5 @@
+- hosts: jmeter_client
+  tasks:
+    - name: 'Stop server'
+      shell: kill -9 `pidof java`
+      become: yes

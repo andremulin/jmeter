@@ -1,0 +1,14 @@
+- hosts: jmeter_client
+  tasks:
+    - name: 'Copy start'
+      copy:
+        src: "files/start.sh"
+        dest: "/jmeter/apache-jmeter-5.3/bin/start.sh"
+        force: yes
+        mode: 644
+      become: yes
+    - name: 'Run server'
+      shell: sh start.sh
+      args:
+        chdir: /jmeter/apache-jmeter-5.3/bin/
+      become: yes

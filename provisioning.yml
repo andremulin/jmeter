@@ -1,0 +1,9 @@
+---
+- hosts: all
+  roles:
+    - default
+    - jmeter
+
+- hosts: jmeter_client
+  roles:
+    - jmeter-client

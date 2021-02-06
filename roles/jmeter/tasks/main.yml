@@ -1,0 +1,35 @@
+---
+- name: 'Jmeter Folder'
+  file:
+    path: '/jmeter'
+    state: directory
+    mode: '0755'
+  become: yes
+
+- name: 'Download Jmeter'
+  get_url: 
+    url: https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-5.3.tgz
+    dest: '/jmeter'
+    mode: 0755
+  become: yes
+
+- name: 'Jmeter unzip'
+  unarchive:
+    src: '/jmeter/apache-jmeter-5.3.tgz'
+    dest: '/jmeter'
+    remote_src: true
+  become: yes
+
+- name: 'Copy certificate'
+  copy:
+    src: "files/rmi_keystore.jks"
+    dest: "/jmeter/apache-jmeter-5.3/bin/rmi_keystore.jks"
+    force: yes
+  become: yes
+
+- name: 'Copy jmeter.properties'
+  copy:
+    src: "files/jmeter.properties"
+    dest: "/jmeter/apache-jmeter-5.3/bin/jmeter.properties"
+    force: yes
+  become: yes

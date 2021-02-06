@@ -1,0 +1,21 @@
+---
+- name: Set Java heap size
+  lineinfile:
+    path: "/jmeter/apache-jmeter-5.3/bin/jmeter"
+    regexp: '^HEAP='
+    line: 'HEAP="-Xms200m -Xmx200m"'
+  become: yes
+
+- name: 'Copy start'
+  copy:
+    src: "files/start.sh"
+    dest: "/jmeter/apache-jmeter-5.3/bin/start.sh"
+    force: yes
+    mode: 644
+  become: yes
+
+- name: 'Run server'
+  shell: sh start.sh
+  args:
+    chdir: /jmeter/apache-jmeter-5.3/bin/
+  become: yes

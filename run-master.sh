@@ -1,0 +1,1 @@
+/jmeter/apache-jmeter-5.3/bin/jmeter.sh -n -t 04_03_Start.jmx -R10.184.16.36,10.184.16.146,10.184.16.160 -l log.jlk -e -o 'reports_html'

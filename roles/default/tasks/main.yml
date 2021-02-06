@@ -1,0 +1,15 @@
+- name: 'Update apt cache'
+  apt:
+    update_cache: yes
+  become: yes
+
+- name: 'Upgrade'
+  apt:
+    upgrade: safe
+  become: yes
+
+- name: 'Install Java dependency'
+  apt:
+    name: ['openjdk-8-jre-headless']
+    state: latest
+  become: yes
