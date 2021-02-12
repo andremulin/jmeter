@@ -1,8 +1,5 @@
-variable "amis" {
-  type = map
-  default = {
-      "us-east-1" = "ami-06fe5f9804d52da4c"
-  }
+variable "ami" {
+  default = "ami-03401cbe0d880ccef"
 }
 
 variable "security_groups" {
@@ -19,5 +16,5 @@ variable "subnets" {
 }
 
 variable "key_name" {
-    default = "aws_dev_certificate"
+    default = "ING-DEV-ITOPS"
 }
